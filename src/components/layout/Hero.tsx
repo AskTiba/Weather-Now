@@ -3,7 +3,7 @@ import Search from "../icons/Search";
 export default function Hero() {
   return (
     <div className=" text-center px-4 my-8 font-bold">
-      <p className="text-6xl font-gr">How's the sky looking today?</p>
+      <h1 className="text-6xl font-black">How's the sky looking today?</h1>
       <div className="flex flex-col md:flex-row justify-center gap-4 mt-10">
         <div className="flex items-center gap-2 bg-neutral-700 rounded-md">
           <div className="ml-3">
