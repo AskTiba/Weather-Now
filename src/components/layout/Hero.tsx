@@ -2,13 +2,11 @@ import Search from "../icons/Search";
 
 export default function Hero() {
   return (
-    <div className=" text-center px-4 my-8 font-bold">
-      <p className="text-6xl font-gr">How's the sky looking today?</p>
-      <div className="flex flex-col md:flex-row justify-center gap-4 mt-10">
-        <div className="flex items-center gap-2 bg-neutral-700 rounded-md">
-          <div className="ml-3">
-            <Search strokeWidth={10} />
-          </div>
+    <div className="flex flex-col items-center w-full px-4 my-8 font-bold">
+      <h1 className="text-6xl text-center font-black">How's the sky looking today?</h1>
+      <div className="flex flex-col md:w-1/2 w-full justify-center md:flex-row gap-4 mt-10">
+        <div className="flex flex-1 w- items-center gap-2 bg-neutral-700 rounded-md">
+          <Search className="ml-3" strokeWidth={10} />
           <input
             type="text"
             placeholder="Search for a place..."
@@ -20,3 +18,4 @@ export default function Hero() {
     </div>
   );
 }
+ 

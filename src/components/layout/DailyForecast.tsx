@@ -57,7 +57,7 @@ export default function DailyForecast() {
   return (
     <main className="my-8 px-4">
       <h1 className="my-3">Daily Forecast</h1>
-      <section className="grid grid-cols-3 gap-4">
+      <section className="grid grid-cols-3 md:grid-cols-7 gap-4">
         {dailyData.map((item, index) => (
           <DailyForecastItem
             key={index}

@@ -8,12 +8,18 @@ import Navbar from "./components/layout/Navbar";
 function App() {
   return (
     <>
-      <main className="text-lg font-sans">
+      <main className="text-lg font-sans lg:p-8">
         <Navbar />
         <Hero />
-        <CityWeather/>
-        <DailyForecast/>
-        <HourlyForecast/>
+        <div className="grid md:grid-cols-3 md:gap-2">
+          <div className="md:col-span-2">
+            <CityWeather />
+            <DailyForecast />
+          </div>
+          <div className="md:col-start-3 h-full">
+            <HourlyForecast />
+          </div>
+        </div>
       </main>
     </>
   );

@@ -6,7 +6,7 @@ import { logo } from "../../assets/images";
 export default function Navbar() {
   const [selectedUnit, setSelectedUnit] = useState("Units");
 
-  const unitOptions = ["Celcius", "Farenheight"];
+  const unitOptions = ["Celsius", "Fahrenheit"];
 
   const handleDaySelect = (unit: string) => {
     setSelectedUnit(unit);
@@ -17,7 +17,7 @@ export default function Navbar() {
     selectedUnit === "Units" ? <Cog fill="#fff" width={20} /> : null;
 
   return (
-    <main className="flex justify-between items-center w-screen px-4 py-2">
+    <main className="flex justify-between items-center px-4 py-2">
       <div className="">
         <img src={logo} alt="" className="w-40" />
       </div>
