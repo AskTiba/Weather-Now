@@ -53,8 +53,8 @@ export default function HourlyForecast() {
   ];
 
   return (
-    <main className="px-4 mb-8 md:mt-4">
-      <article className="bg-neutral-700 p-4 md:mt-3.5 rounded-2xl">
+    <main className="px-4 mb-8 mt-4">
+      <article className="bg-neutral-700 p-4 rounded-2xl">
         <div className="mb-3 flex items-center w-full justify-between">
           <h3 className="">Hourly forecast</h3>
           <Dropdown
