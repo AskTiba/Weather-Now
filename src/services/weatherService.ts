@@ -1,10 +1,10 @@
 const API_KEY = import.meta.env.VITE_OPENWEATHERMAP_API_KEY;
 const API_BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
-export const getWeatherData = async (city: string) => {
+export const getWeatherData = async (city: string, unit: string) => {
   const [weatherResponse, forecastResponse] = await Promise.all([
-    fetch(`${API_BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric`),
-    fetch(`${API_BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=metric`),
+    fetch(`${API_BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=${unit}`),
+    fetch(`${API_BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=${unit}`),
   ]);
 
   if (!weatherResponse.ok || !forecastResponse.ok) {

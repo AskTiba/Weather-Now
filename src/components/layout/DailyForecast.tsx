@@ -1,3 +1,4 @@
+import type { ForecastData, ForecastItem } from "../../types/weather";
 import DailyForecastItem from "./DailyForecastItem";
 import {
   iconDrizzle,
@@ -10,11 +11,33 @@ import {
   iconSunny,
 } from "../../assets/images";
 
-interface DailyForecastProps {
-  forecastData: any;
+interface DailyData {
+  [date: string]: {
+    day: string;
+    icon: string;
+    altText: string;
+    maxTemperature: number;
+    minTemperature: number;
+  };
 }
 
-export default function DailyForecast({ forecastData }: DailyForecastProps) {
+interface DailyForecastDisplayItem {
+  day: string;
+  icon: string;
+  altText: string;
+  maxTemperature: number;
+  minTemperature: number;
+}
+
+interface DailyForecastProps {
+  forecastData: ForecastData;
+  unit: string;
+}
+
+export default function DailyForecast({
+  forecastData,
+  unit,
+}: DailyForecastProps) {
   const weatherIcons: { [key: string]: string } = {
     "01d": iconSunny,
     "01n": iconSunny,
@@ -36,38 +59,41 @@ export default function DailyForecast({ forecastData }: DailyForecastProps) {
     "50n": iconFog,
   };
 
-  const dailyData = forecastData.list.reduce((acc: any, item: any) => {
-    const date = new Date(item.dt * 1000).toLocaleDateString(undefined, {
-      weekday: "short",
-    });
-    if (!acc[date]) {
-      acc[date] = {
-        day: date,
-        icon: item.weather[0].icon,
-        altText: item.weather[0].description,
-        maxTemperature: item.main.temp_max,
-        minTemperature: item.main.temp_min,
-      };
-    } else {
-      acc[date].maxTemperature = Math.max(
-        acc[date].maxTemperature,
-        item.main.temp_max
-      );
-      acc[date].minTemperature = Math.min(
-        acc[date].minTemperature,
-        item.main.temp_min
-      );
-    }
-    return acc;
-  }, {});
+  const dailyData = forecastData.list.reduce(
+    (acc: DailyData, item: ForecastItem) => {
+      const date = new Date(item.dt * 1000).toLocaleDateString(undefined, {
+        weekday: "short",
+      });
+      if (!acc[date]) {
+        acc[date] = {
+          day: date,
+          icon: item.weather[0].icon,
+          altText: item.weather[0].description,
+          maxTemperature: item.main.temp_max,
+          minTemperature: item.main.temp_min,
+        };
+      } else {
+        acc[date].maxTemperature = Math.max(
+          acc[date].maxTemperature,
+          item.main.temp_max
+        );
+        acc[date].minTemperature = Math.min(
+          acc[date].minTemperature,
+          item.main.temp_min
+        );
+      }
+      return acc;
+    },
+    {} as DailyData
+  );
 
-  const dailyForecast = Object.values(dailyData);
+  const dailyForecast: DailyForecastDisplayItem[] = Object.values(dailyData);
 
   return (
     <main className="my-8 px-4">
       <h1 className="my-3">Daily Forecast</h1>
       <section className="grid grid-cols-3 md:grid-cols-7 gap-4">
-        {dailyForecast.map((item: any, index) => (
+        {dailyForecast.map((item: DailyForecastDisplayItem, index) => (
           <DailyForecastItem
             key={index}
             day={item.day}
@@ -75,6 +101,7 @@ export default function DailyForecast({ forecastData }: DailyForecastProps) {
             altText={item.altText}
             maxTemperature={Math.round(item.maxTemperature)}
             minTemperature={Math.round(item.minTemperature)}
+            unit={unit}
           />
         ))}
       </section>

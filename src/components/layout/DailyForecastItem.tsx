@@ -6,6 +6,7 @@ interface DailyForecastItemProps {
   altText: string;
   maxTemperature: number;
   minTemperature: number;
+  unit: string;
 }
 
 const DailyForecastItem: React.FC<DailyForecastItemProps> = ({
@@ -14,14 +15,19 @@ const DailyForecastItem: React.FC<DailyForecastItemProps> = ({
   altText,
   maxTemperature,
   minTemperature,
+  unit,
 }) => {
   return (
     <div className="bg-neutral-700 rounded-md p-3 flex flex-col items-center">
       <h3 className="">{day}</h3>
       <img src={icon} alt={altText} className="" />
       <div className="flex justify-between w-full">
-        <p className="">{maxTemperature}°</p>
-        <p className="">{minTemperature}°</p>
+        <p className="">
+          {maxTemperature}°{unit === "metric" ? "C" : "F"}
+        </p>
+        <p className="">
+          {minTemperature}°{unit === "metric" ? "C" : "F"}
+        </p>
       </div>
     </div>
   );

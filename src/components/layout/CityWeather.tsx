@@ -14,9 +14,10 @@ import WeatherDetailItem from "./WeatherDetailItem";
 
 interface CityWeatherProps {
   weatherData: any;
+  unit: string;
 }
 
-export default function CityWeather({ weatherData }: CityWeatherProps) {
+export default function CityWeather({ weatherData, unit }: CityWeatherProps) {
   const options: Intl.DateTimeFormatOptions = {
     weekday: "long",
     year: "numeric",
@@ -49,9 +50,17 @@ export default function CityWeather({ weatherData }: CityWeatherProps) {
   };
 
   const weatherDetails = [
-    { title: "Feels like", value: `${Math.round(weatherData.main.feels_like)}°` },
+    {
+      title: "Feels like",
+      value: `${Math.round(weatherData.main.feels_like)}°`,
+    },
     { title: "Humidity", value: `${weatherData.main.humidity}%` },
-    { title: "Wind Speed", value: `${weatherData.wind.speed} km/h` },
+    {
+      title: "Wind Speed",
+      value: `${weatherData.wind.speed} ${
+        unit === "metric" ? "km/h" : "mph"
+      }`,
+    },
     { title: "Precipitation", value: `${weatherData.rain?.["1h"] || 0} mm` },
   ];
 

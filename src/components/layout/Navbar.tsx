@@ -1,17 +1,14 @@
-import { useState } from "react";
 import Cog from "../icons/Cog";
 import Dropdown from "../common/Dropdown/Dropdown";
 import { logo } from "../../assets/images";
 
-export default function Navbar() {
-  const [selectedUnit, setSelectedUnit] = useState("Units");
+interface NavbarProps {
+  onUnitChange: (unit: string) => void;
+  selectedUnit: string;
+}
 
+export default function Navbar({ onUnitChange, selectedUnit }: NavbarProps) {
   const unitOptions = ["Celsius", "Fahrenheit"];
-
-  const handleDaySelect = (unit: string) => {
-    setSelectedUnit(unit);
-    // In a real application, you would fetch new hourly data based on the selected day here.
-  };
 
   const displayIcon =
     selectedUnit === "Units" ? <Cog fill="#fff" width={20} /> : null;
@@ -25,7 +22,7 @@ export default function Navbar() {
         <Dropdown
           options={unitOptions}
           selectedValue={selectedUnit}
-          onSelect={handleDaySelect}
+          onSelect={onUnitChange}
           className=""
           icon={displayIcon}
         />{" "}
