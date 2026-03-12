@@ -47,12 +47,12 @@ function App() {
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
         {weatherData && forecastData && (
-          <div className="grid md:grid-cols-3 md:gap-2 md:grid-flow-col md:grid-rows-2">
+          <div className="grid md:grid-cols-3 md:gap-4">
             <div className="md:col-span-2">
               <CityWeather weatherData={weatherData} unit={unit} />
               <DailyForecast forecastData={forecastData} unit={unit} />
             </div>
-            <div className="md:row-span-2">
+            <div className="">
               <HourlyForecast forecastData={forecastData} unit={unit} />
             </div>
           </div>
