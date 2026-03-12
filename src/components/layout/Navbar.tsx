@@ -14,7 +14,7 @@ export default function Navbar({ onUnitChange, selectedUnit }: NavbarProps) {
     selectedUnit === "Units" ? <Cog fill="#fff" width={20} /> : null;
 
   return (
-    <main className="flex justify-between items-center px-4 py-2">
+    <nav className="flex justify-between items-center px-4 py-2">
       <div className="">
         <img src={logo} alt="" className="w-40" />
       </div>
@@ -27,6 +27,6 @@ export default function Navbar({ onUnitChange, selectedUnit }: NavbarProps) {
           icon={displayIcon}
         />{" "}
       </div>
-    </main>
+    </nav>
   );
 }

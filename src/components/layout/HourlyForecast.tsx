@@ -118,10 +118,10 @@ export default function HourlyForecast({
   const hourlyData = interpolateHourlyData(filteredHourlyData).slice(0, 8);
 
   return (
-    <main className="px-4 mb-8 mt-4">
+    <section className="px-4 mb-8 mt-4">
       <article className="bg-neutral-700 p-4 rounded-2xl">
         <div className="mb-3 flex items-center w-full justify-between">
-          <h3 className="">Hourly forecast</h3>
+          <h3 className="text-xl font-bold">Hourly forecast</h3>
           <Dropdown
             options={dayOptions}
             selectedValue={selectedDay}
@@ -145,6 +145,6 @@ export default function HourlyForecast({
           ))}
         </div>
       </article>
-    </main>
+    </section>
   );
 }

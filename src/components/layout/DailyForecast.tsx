@@ -90,9 +90,9 @@ export default function DailyForecast({
   const dailyForecast: DailyForecastDisplayItem[] = Object.values(dailyData);
 
   return (
-    <main className="my-8 px-4">
-      <h1 className="my-3">Daily Forecast</h1>
-      <section className="grid grid-cols-3 md:grid-cols-7 gap-4">
+    <section className="my-8 px-4">
+      <h1 className="my-3 text-2xl">Daily Forecast</h1>
+      <div className="grid grid-cols-3 md:grid-cols-7 gap-4">
         {dailyForecast.map((item: DailyForecastDisplayItem, index) => (
           <DailyForecastItem
             key={index}
@@ -104,7 +104,7 @@ export default function DailyForecast({
             unit={unit}
           />
         ))}
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }
