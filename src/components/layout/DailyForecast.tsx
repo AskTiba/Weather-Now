@@ -31,12 +31,10 @@ interface DailyForecastDisplayItem {
 
 interface DailyForecastProps {
   forecastData: ForecastData;
-  unit: string;
 }
 
 export default function DailyForecast({
   forecastData,
-  unit,
 }: DailyForecastProps) {
   const weatherIcons: { [key: string]: string } = {
     "01d": iconSunny,

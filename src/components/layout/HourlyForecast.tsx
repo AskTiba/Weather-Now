@@ -23,12 +23,10 @@ interface HourlyItem {
 
 interface HourlyForecastProps {
   forecastData: ForecastData;
-  unit: string;
 }
 
 export default function HourlyForecast({
   forecastData,
-  unit,
 }: HourlyForecastProps) {
   const [selectedDay, setSelectedDay] = useState("Today");
 

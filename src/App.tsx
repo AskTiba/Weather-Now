@@ -50,10 +50,10 @@ function App() {
           <div className="grid md:grid-cols-3 md:gap-6 items-stretch">
             <div className="md:col-span-2 flex flex-col gap-6">
               <CityWeather weatherData={weatherData} unit={unit} />
-              <DailyForecast forecastData={forecastData} unit={unit} />
+              <DailyForecast forecastData={forecastData} />
             </div>
             <div className="h-full">
-              <HourlyForecast forecastData={forecastData} unit={unit} />
+              <HourlyForecast forecastData={forecastData} />
             </div>
           </div>
         )}
