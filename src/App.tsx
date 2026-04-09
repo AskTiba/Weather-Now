@@ -38,21 +38,21 @@ function App() {
 
   return (
     <>
-      <main className="text-lg font-sans lg:p-8">
+      <main className="text-lg font-sans lg:p-8 max-w-7xl mx-auto">
         <Navbar
           onUnitChange={handleUnitChange}
           selectedUnit={unit === "metric" ? "Celsius" : "Fahrenheit"}
         />
         <Hero onCityChange={setCity} />
-        {loading && <p>Loading...</p>}
+        {loading && !weatherData && <p>Loading...</p>}
         {error && <p>{error}</p>}
         {weatherData && forecastData && (
-          <div className="grid md:grid-cols-3 md:gap-4">
-            <div className="md:col-span-2">
+          <div className="grid md:grid-cols-3 md:gap-6 items-stretch">
+            <div className="md:col-span-2 flex flex-col gap-6">
               <CityWeather weatherData={weatherData} unit={unit} />
               <DailyForecast forecastData={forecastData} unit={unit} />
             </div>
-            <div className="">
+            <div className="h-full">
               <HourlyForecast forecastData={forecastData} unit={unit} />
             </div>
           </div>
