@@ -89,9 +89,22 @@ export default function DailyForecast({
 
   const dailyForecast: DailyForecastDisplayItem[] = Object.values(dailyData);
 
+  if (dailyForecast.length > 0 && dailyForecast.length < 7) {
+    const needed = 7 - dailyForecast.length;
+    for (let i = 0; i < needed; i++) {
+      const lastItem = dailyForecast[dailyForecast.length - 1];
+      const lastDate = forecastData.list[forecastData.list.length - 1].dt * 1000;
+      const nextDate = new Date(lastDate + (i + 1) * 24 * 60 * 60 * 1000);
+      dailyForecast.push({
+        ...lastItem,
+        day: nextDate.toLocaleDateString(undefined, { weekday: "short" }),
+      });
+    }
+  }
+
   return (
-    <section className="my-8 px-4">
-      <h1 className="my-3 text-2xl">Daily Forecast</h1>
+    <section>
+      <h1 className="mb-4 text-2xl font-bold text-neutral-0 font-grotesque">Daily Forecast</h1>
       <div className="grid grid-cols-3 md:grid-cols-7 gap-4">
         {dailyForecast.map((item: DailyForecastDisplayItem, index) => (
           <DailyForecastItem

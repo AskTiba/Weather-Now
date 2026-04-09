@@ -22,13 +22,13 @@ const HourlyForecastItem: React.FC<HourlyForecastItemProps> = ({
   unit,
 }) => {
   return (
-    <section className="flex items-center w-full justify-between bg-neutral-600 rounded-md px-3 py-1">
-      <div className="flex items-center gap-2">
+    <section className="flex items-center w-full justify-between bg-neutral-700 rounded-xl px-4 py-1.5 font-semibold">
+      <div className="flex items-center gap-3">
         <img src={icon} alt={altText} className="size-10" />
         <h3 className="mt-1">{time}</h3>
       </div>
-      <p className="">
-        {temperature}°{unit === "metric" ? "C" : "F"}
+      <p className="text-xl">
+        {temperature}°
       </p>
     </section>
   );

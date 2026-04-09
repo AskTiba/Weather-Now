@@ -67,7 +67,7 @@ export default function HourlyForecast({
     }
   };
 
-  const dayOptions: string[] = Array.from(
+  let dayOptions: string[] = Array.from(
     new Set(
       forecastData.list.map((item: ForecastItem) =>
         getDayName(new Date(item.dt * 1000))
@@ -75,14 +75,31 @@ export default function HourlyForecast({
     )
   );
 
+  if (dayOptions.length < 7) {
+    const needed = 7 - dayOptions.length;
+    for (let i = 0; i < needed; i++) {
+        const lastDate = forecastData.list[forecastData.list.length - 1].dt * 1000;
+        const nextDate = new Date(lastDate + (i + 1) * 24 * 60 * 60 * 1000);
+        dayOptions.push(getDayName(nextDate));
+    }
+  }
+
   const handleDaySelect = (day: string) => {
     setSelectedDay(day);
   };
 
-  const filteredHourlyData = forecastData.list.filter((item: ForecastItem) => {
+  let filteredHourlyData = forecastData.list.filter((item: ForecastItem) => {
     const itemDate = new Date(item.dt * 1000);
     return getDayName(itemDate) === selectedDay;
   });
+
+  if (filteredHourlyData.length === 0) {
+    const lastDayName = getDayName(new Date(forecastData.list[forecastData.list.length - 1].dt * 1000));
+    filteredHourlyData = forecastData.list.filter((item: ForecastItem) => {
+      const itemDate = new Date(item.dt * 1000);
+      return getDayName(itemDate) === lastDayName;
+    });
+  }
 
   const interpolateHourlyData = (data: ForecastItem[]): HourlyItem[] => {
     if (data.length < 2) {
@@ -118,8 +135,8 @@ export default function HourlyForecast({
   const hourlyData = interpolateHourlyData(filteredHourlyData).slice(0, 8);
 
   return (
-    <section className="px-4 mb-8 mt-4">
-      <article className="bg-neutral-700 p-4 rounded-2xl">
+    <section className="h-full w-full">
+      <article className="bg-neutral-800 p-6 rounded-2xl h-full flex flex-col">
         <div className="mb-3 flex items-center w-full justify-between">
           <h3 className="text-xl font-bold">Hourly forecast</h3>
           <Dropdown
@@ -129,7 +146,7 @@ export default function HourlyForecast({
             className="w-32"
           />
         </div>
-        <div className="grid grid-cols-1 gap-3">
+        <div className="flex flex-col flex-1 justify-between gap-1 mt-2">
           {hourlyData.map((item: HourlyItem, index: number) => (
             <HourlyForecastItem
               key={index}

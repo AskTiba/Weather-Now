@@ -18,15 +18,15 @@ const DailyForecastItem: React.FC<DailyForecastItemProps> = ({
   unit,
 }) => {
   return (
-    <div className="bg-neutral-700 rounded-md p-3 flex flex-col items-center">
+    <div className="bg-neutral-800 rounded-xl p-3 flex flex-col items-center gap-2 font-semibold">
       <h3 className="">{day}</h3>
-      <img src={icon} alt={altText} className="" />
-      <div className="flex justify-between w-full">
-        <p className="">
-          {maxTemperature}°{unit === "metric" ? "C" : "F"}
+      <img src={icon} alt={altText} className="size-12" />
+      <div className="flex justify-between w-full gap-2">
+        <p className="text-neutral-0">
+          {maxTemperature}°
         </p>
-        <p className="">
-          {minTemperature}°{unit === "metric" ? "C" : "F"}
+        <p className="text-neutral-300">
+          {minTemperature}°
         </p>
       </div>
     </div>
