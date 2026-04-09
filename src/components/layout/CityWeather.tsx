@@ -65,9 +65,9 @@ export default function CityWeather({ weatherData, unit }: CityWeatherProps) {
   ];
 
   return (
-    <>
+    <div className="flex flex-col gap-6">
       <div
-        className="m-4 flex flex-col gap-2 rounded-lg bg-cover bg-center bg-no-repeat py-8 md:px-5 md:py-9 weather-bg min-h-[200px]"
+        className="flex flex-col gap-2 rounded-2xl bg-cover bg-center bg-no-repeat py-8 md:px-5 md:py-9 weather-bg min-h-[200px]"
         style={{
           "--bg-small": `url(${bgTodaySmall})`,
           "--bg-large": `url(${bgTodayLarge})`,
@@ -76,7 +76,7 @@ export default function CityWeather({ weatherData, unit }: CityWeatherProps) {
       >
         <div className="md:flex md:justify-between z-0 md:items-center  md:w-full">
           <section className="flex flex-col items-center md:items-start">
-            <h2 className="text-white font-semibold text-4xl">
+            <h2 className="text-neutral-0 font-bold font-grotesque text-4xl">
               {weatherData.name}, {weatherData.sys.country}
             </h2>
             <p className="">{formatedDate}</p>
@@ -91,7 +91,7 @@ export default function CityWeather({ weatherData, unit }: CityWeatherProps) {
           </div>
         </div>
       </div>
-      <section className="grid grid-cols-2 md:grid-cols-4 px-4 mb-8 gap-4">
+      <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {weatherDetails.map((item, index) => (
           <WeatherDetailItem
             key={index}
@@ -100,6 +100,6 @@ export default function CityWeather({ weatherData, unit }: CityWeatherProps) {
           />
         ))}
       </section>
-    </>
+    </div>
   );
 }

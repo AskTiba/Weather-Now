@@ -10,9 +10,9 @@ const WeatherDetailItem: React.FC<WeatherDetailItemProps> = ({
   value,
 }) => {
   return (
-    <div className="bg-neutral-700 rounded-md flex flex-col p-5 gap-4">
-      <h3 className="">{title}</h3>
-      <p className="text-3xl font-semibold">{typeof value === 'number' ? `${value}°` : value}</p>
+    <div className="bg-neutral-800 rounded-2xl flex flex-col p-5 gap-4">
+      <h3 className="text-sm font-semibold text-neutral-300">{title}</h3>
+      <p className="text-4xl font-semibold">{typeof value === 'number' ? `${value}°` : value}</p>
     </div>
   );
 };
