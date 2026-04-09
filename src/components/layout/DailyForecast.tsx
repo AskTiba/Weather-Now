@@ -114,7 +114,6 @@ export default function DailyForecast({
             altText={item.altText}
             maxTemperature={Math.round(item.maxTemperature)}
             minTemperature={Math.round(item.minTemperature)}
-            unit={unit}
           />
         ))}
       </div>

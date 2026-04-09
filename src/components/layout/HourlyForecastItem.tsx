@@ -10,8 +10,6 @@ interface HourlyForecastItemProps {
 
   altText: string;
 
-  unit: string;
-
 }
 
 const HourlyForecastItem: React.FC<HourlyForecastItemProps> = ({
@@ -19,7 +17,6 @@ const HourlyForecastItem: React.FC<HourlyForecastItemProps> = ({
   temperature,
   icon,
   altText,
-  unit,
 }) => {
   return (
     <section className="flex items-center w-full justify-between bg-neutral-700 rounded-xl px-4 py-1.5 font-semibold">

@@ -157,7 +157,6 @@ export default function HourlyForecast({
               temperature={Math.round(item.main.temp)}
               icon={weatherIcons[item.weather[0].icon]}
               altText={item.weather[0].description}
-              unit={unit}
             />
           ))}
         </div>
