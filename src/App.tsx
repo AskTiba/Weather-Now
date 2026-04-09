@@ -8,7 +8,9 @@ import { getWeatherData } from "./services/weatherService";
 
 function App() {
   const [city, setCity] = useState("New York");
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [weatherData, setWeatherData] = useState<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [forecastData, setForecastData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,7 +28,7 @@ function App() {
         const { weatherData, forecastData } = await getWeatherData(city, unit);
         setWeatherData(weatherData);
         setForecastData(forecastData);
-      } catch (error) {
+      } catch {
         setError("Failed to fetch weather data");
       } finally {
         setLoading(false);

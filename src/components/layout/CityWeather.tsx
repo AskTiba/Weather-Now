@@ -13,6 +13,7 @@ import {
 import WeatherDetailItem from "./WeatherDetailItem";
 
 interface CityWeatherProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   weatherData: any;
   unit: string;
 }

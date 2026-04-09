@@ -65,7 +65,7 @@ export default function HourlyForecast({
     }
   };
 
-  let dayOptions: string[] = Array.from(
+  const dayOptions: string[] = Array.from(
     new Set(
       forecastData.list.map((item: ForecastItem) =>
         getDayName(new Date(item.dt * 1000))
