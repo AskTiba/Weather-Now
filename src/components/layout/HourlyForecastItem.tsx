@@ -19,12 +19,13 @@ const HourlyForecastItem: React.FC<HourlyForecastItemProps> = ({
   altText,
 }) => {
   return (
-    <section className="flex items-center w-full justify-between bg-neutral-700 rounded-xl px-4 py-1.5 font-semibold">
-      <div className="flex items-center gap-3">
+    <section className="bg-neutral-700 rounded-2xl md:rounded-xl p-4 md:px-4 md:py-1.5 flex flex-col md:flex-row items-center md:w-full justify-between font-semibold min-w-[80px] md:min-w-0 shrink-0 snap-start gap-2 md:gap-0">
+      <h3 className="md:hidden opacity-70 text-sm whitespace-nowrap">{time}</h3>
+      <div className="flex items-center md:gap-3">
         <img src={icon} alt={altText} className="size-10" />
-        <h3 className="mt-1">{time}</h3>
+        <h3 className="hidden md:block mt-1">{time}</h3>
       </div>
-      <p className="text-xl">
+      <p className="text-xl md:text-xl">
         {temperature}°
       </p>
     </section>

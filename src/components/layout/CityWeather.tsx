@@ -67,27 +67,27 @@ export default function CityWeather({ weatherData, unit }: CityWeatherProps) {
   return (
     <div className="flex flex-col gap-6">
       <div
-        className="flex flex-col gap-2 rounded-2xl bg-cover bg-center bg-no-repeat py-8 md:px-5 md:py-9 weather-bg min-h-[200px]"
+        className="flex flex-col gap-2 rounded-2xl bg-cover bg-center bg-no-repeat py-8 px-6 md:px-5 md:py-9 weather-bg min-h-[200px]"
         style={{
           "--bg-small": `url(${bgTodaySmall})`,
           "--bg-large": `url(${bgTodayLarge})`,
           backgroundImage: "var(--bg-small)",
         }}
       >
-        <div className="md:flex md:justify-between z-0 md:items-center  md:w-full">
+        <div className="flex flex-col gap-6 md:flex-row md:justify-between z-0 md:items-center md:w-full">
           <section className="flex flex-col items-center md:items-start">
             <h2 className="text-neutral-0 font-bold font-grotesque text-4xl">
               {weatherData.name}, {weatherData.sys.country}
             </h2>
             <p className="">{formatedDate}</p>
           </section>
-          <div className="flex items-center">
+          <div className="flex items-center justify-center">
             <img
               src={weatherIcons[weatherData.weather[0].icon]}
               alt={weatherData.weather[0].description}
-              className="size-36"
+              className="size-32 md:size-36"
             />
-            <p className="text-8xl">{Math.round(weatherData.main.temp)}°</p>
+            <p className="text-7xl md:text-8xl">{Math.round(weatherData.main.temp)}°</p>
           </div>
         </div>
       </div>

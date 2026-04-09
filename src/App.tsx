@@ -38,7 +38,7 @@ function App() {
 
   return (
     <>
-      <main className="text-lg font-sans lg:p-8 max-w-7xl mx-auto">
+      <main className="text-lg font-sans p-4 lg:p-8 max-w-7xl mx-auto">
         <Navbar
           onUnitChange={handleUnitChange}
           selectedUnit={unit === "metric" ? "Celsius" : "Fahrenheit"}
@@ -47,15 +47,25 @@ function App() {
         {loading && !weatherData && <p>Loading...</p>}
         {error && <p>{error}</p>}
         {weatherData && forecastData && (
-          <div className="grid md:grid-cols-3 md:gap-6 items-stretch">
-            <div className="md:col-span-2 flex flex-col gap-6">
+          <>
+            {/* Native Mobile Flow */}
+            <div className="flex flex-col gap-6 md:hidden mt-2">
               <CityWeather weatherData={weatherData} unit={unit} />
+              <HourlyForecast forecastData={forecastData} />
               <DailyForecast forecastData={forecastData} />
             </div>
-            <div className="h-full">
-              <HourlyForecast forecastData={forecastData} />
+
+            {/* Desktop UI Layout */}
+            <div className="hidden md:grid md:grid-cols-3 gap-6 items-stretch mt-6">
+              <div className="md:col-span-2 flex flex-col gap-6">
+                <CityWeather weatherData={weatherData} unit={unit} />
+                <DailyForecast forecastData={forecastData} />
+              </div>
+              <div className="h-full">
+                <HourlyForecast forecastData={forecastData} />
+              </div>
             </div>
-          </div>
+          </>
         )}
       </main>
     </>

@@ -144,7 +144,7 @@ export default function HourlyForecast({
             className="w-32"
           />
         </div>
-        <div className="flex flex-col flex-1 justify-between gap-1 mt-2">
+        <div className="flex flex-row overflow-x-auto snap-x md:flex-col md:flex-1 justify-between gap-4 md:gap-1 mt-4 md:mt-2 scrollbar-hide pb-2 md:pb-0">
           {hourlyData.map((item: HourlyItem, index: number) => (
             <HourlyForecastItem
               key={index}

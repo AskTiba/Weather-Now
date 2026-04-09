@@ -16,11 +16,11 @@ export default function Hero({ onCityChange }: HeroProps) {
   };
 
   return (
-    <div className="flex flex-col items-center w-full px-4 my-8 font-bold">
-      <h1 className="text-[3.2em] font-grotesque text-center font-black">
+    <div className="flex flex-col items-center w-full px-4 mb-4 md:my-8 font-bold">
+      <h1 className="hidden md:block text-4xl md:text-[3.2em] font-grotesque text-center font-black">
         How's the sky looking today?
       </h1>
-      <div className="flex flex-col md:w-1/2 w-full justify-center md:flex-row gap-4 mt-10">
+      <div className="flex w-full md:w-1/2 flex-col justify-center md:flex-row gap-4 md:mt-10">
         <div className="flex flex-1 items-center gap-2 bg-neutral-800 rounded-lg">
           <Search className="ml-3" strokeWidth={10} />
           <input
@@ -31,7 +31,7 @@ export default function Hero({ onCityChange }: HeroProps) {
             onChange={(e) => setCity(e.target.value)}
           />
         </div>
-        <button className="bg-blue-500 rounded-lg px-8 text-neutral-0 font-semibold" onClick={handleSearch}>
+        <button className="bg-blue-500 rounded-lg px-8 py-3 text-neutral-0 font-semibold" onClick={handleSearch}>
           Search
         </button>
       </div>

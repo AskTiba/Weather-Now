@@ -16,7 +16,7 @@ export default function Navbar({ onUnitChange, selectedUnit }: NavbarProps) {
   return (
     <nav className="flex justify-between items-center px-4 py-2">
       <div className="">
-        <img src={logo} alt="" className="w-40" />
+        <img src={logo} alt="" className="w-32 md:w-40" />
       </div>
       <div className="flex items-center gap-1">
         <Dropdown

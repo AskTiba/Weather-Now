@@ -103,7 +103,7 @@ export default function DailyForecast({
   return (
     <section>
       <h1 className="mb-4 text-2xl font-bold text-neutral-0 font-grotesque">Daily Forecast</h1>
-      <div className="grid grid-cols-3 md:grid-cols-7 gap-4">
+      <div className="flex flex-col md:grid md:grid-cols-7 gap-4">
         {dailyForecast.map((item: DailyForecastDisplayItem, index) => (
           <DailyForecastItem
             key={index}
